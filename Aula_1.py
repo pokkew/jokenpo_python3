@@ -7,6 +7,15 @@ actplayer2 = 0
 pedra = 1
 papel = 2
 tesoura = 3
+pa = 0
+cont = 0
+round = cont+1
+contdraw = 0
+contwinp1 = 0
+contwinp2 = 0
+contwinia1 = 0
+contwinia2 = 0
+
 print('\nPedra Papel e Tesoura, the game\n')
 print('Selecionar modo de jogo: \n')
 print('Player vs I.A: digite 1\n')
@@ -16,42 +25,55 @@ modo = int(input(''))
 
 #Modo player vs I.A
 if (modo == 1):
-    nomePlayer1 = input('Player, me diga seu nome: ')
-    actPlayer1 = int(input('{0} escolha entre pedra, papel e tesoura: 1, 2 ou 3 respectivamente \n'.format(nomePlayer1)))
+    nomeplayer1 = input('Player, me diga seu nome: ')
+    while (pa == 0):
+        actplayer1 = int(input('{0} escolha entre pedra, papel e tesoura: 1, 2 ou 3 respectivamente \n'.format(nomeplayer1)))
+        cont +=1
+        for _ in range(3):
+            actia1 = randint(1,3)#gera o valor aleatorio da IA
 
-    for _ in range(3):
-        actia1 = randint(1,3)#gera o valor aleatorio da IA
+        print('     JO\n        KEN\n       PO')#tá torto, arrumar!
+        if actplayer1 == actia1: #condições de empate
+            contdraw +=1
+            if actplayer1 == 1:
+                print('{0} jogou ...\n PEDRA\nI.A também, empate.' .format(nomeplayer1))
+            elif actplayer1 == 2:
+                print('{0} jogou ...\n PAPEL\nI.A também, empate.'.format(nomeplayer1))
+            elif actplayer1 == 3:
+                print('{0} jogou ...\n TESOURA\nI.A também, empate.'.format(nomeplayer1))
 
-    print('     JO\n        KEN\n       PO')#tá torto, arrumar!
-    if actplayer1 == actia1: #condições de empate
-        if actplayer1 == 1:
-            print('{0} jogou ...\n PEDRA\n I.A também, empate.' .format(nomePlayer1))
-        elif actPlayer1 == 2:
-            print ('{0} jogou ...\n PAPEL\n I.A também, empate.'.format(nomePlayer1))
-        elif actPlayer1 == 3:
-            print ('{0} jogou ...\n TESOURA\n I.A também, empate.'.format(nomePlayer1))
+        elif actplayer1 == 1 and actia1 == 3:#condições de vitora Player
+            contwinp1 +=1
+            print('{0} jogou ...\n PEDRA\nI.A jogou TESOURA'.format(nomeplayer1))
+            print('{0}, parabéns, esse round é seu!'.format(nomeplayer1))
+        elif actplayer1 == 2 and actia1 == 1:
+            contwinp1 +=1
+            print('{0} jogou ...\n PAPEL\nI.A jogou PEDRA'.format(nomeplayer1))
+            print('{0}, parabéns, esse round é seu!'.format(nomeplayer1))
+        elif actplayer1 == 3 and actia1 == 2:
+            contwinp1 +=1
+            print('{0} jogou ...\n TESOURA\n I.A jogou PAPEL'.format(nomeplayer1))
+            print('{0}, parabéns, esse round é seu!'.format(nomeplayer1))
 
-    elif actPlayer1 == 1 and actia1 == 3:#condições de vitora Player
-        print ('{0} jogou ...\n PEDRA\n I.A jogou TESOURA'.format(nomePlayer1))
-        print ('{0}, parabéns, esse round é seu!'.format(nomePlayer1))
-    elif actPlayer1 == 2 and actia1 == 1:
-        print ('{0} jogou ...\n PAPEL\n I.A jogou PEDRA'.format(nomePlayer1))
-        print ('{0}, parabéns, esse round é seu!'.format(nomePlayer1))
-    elif actPlayer1 == 3 and actia1 == 2:
-        print ('{0} jogou ...\n TESOURA\n I.A jogou PAPEL'.format(nomePlayer1))
-        print ('{0}, parabéns, esse round é seu!'.format(nomePlayer1))
+        elif actplayer1 == 3 and actia1 == 1:#condição de vitoria I.A
+            contwinia1 +=1
+            print('{0} jogou ...\n TESOURA\nI.A jogou PEDRA'.format(nomeplayer1))
+            print('{0}... derrota, mais sorte na proxima!'.format(nomeplayer1))
+        elif actplayer1 == 1 and actia1 == 2:
+            contwinia1 +=1
+            print('{0} jogou ...\n PEDRA\nI.A jogou PAPEL'.format(nomeplayer1))
+            print('{0}... derrota, mais sorte na proxima!'.format(nomeplayer1))
+        elif actplayer1 == 2 and actia1 == 3:
+            contwinia1 +=1
+            print('{0} jogou ...\n PAPEL\nI.A jogou TESOURA'.format(nomeplayer1))
+            print('{0}... derrota, mais sorte na proxima!'.format(nomeplayer1))
 
-    elif actPlayer1 == 3 and actia1 == 1:#condição de vitoria I.A
-        print ('{0} jogou ...\n TESOURA\n I.A jogou PEDRA'.format(nomePlayer1))
-        print('{0} derrota, mais sorte na proxima!'.format(nomePlayer1))
-    elif actPlayer1 == 1 and actia1 == 2:
-        print ('{0} jogou ...\n PEDRA\n I.A jogou PAPEL'.format(nomePlayer1))
-        print('{0} derrota, mais sorte na proxima!'.format(nomePlayer1))
-    elif actPlayer1 == 2 and actia1 == 3:
-        print ('{0} jogou ...\n PAPEL\n I.A jogou TESOURA'.format(nomePlayer1))
-        print('{0} derrota, mais sorte na proxima!'.format(nomePlayer1))
+        else:
+            print('Valor Inválido') #PLAYER RETARDADO QUE NÃO SABE DIGITAR 1 2 ou 3
+        print('\nRodada {0}\n'.format(round))
+        print('{0} tem {1} vitórias\nI.A tem {2} Vitórias\n'.format(nomeplayer1,contwinp1,contwinia1))
+        print('{0} Empates\n'.format(contdraw))
+        pa = int(input('Digite 0 para jogar novamente\nDigite 1 para voltar ao menu\n'))
 
-    else:
-        print('Valor Inválido'): #PLAYER RETARDADO QUE NÃO SABE DIGITAR 1 2 ou 3
 else:
     print('valor inválido')
