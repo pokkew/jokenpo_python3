@@ -32,7 +32,7 @@ if (modo == 1):
             print ('{0} jogou ...\n PAPEL\n I.A também, empate.'.format(nomePlayer1))
         elif actPlayer1 == 3:
             print ('{0} jogou ...\n TESOURA\n I.A também, empate.'.format(nomePlayer1))
-        else:
+
     elif actPlayer1 == 1 and actia1 == 3:#condições de vitora Player
         print ('{0} jogou ...\n PEDRA\n I.A jogou TESOURA'.format(nomePlayer1))
         print ('{0}, parabéns, esse round é seu!'.format(nomePlayer1))
@@ -53,6 +53,6 @@ if (modo == 1):
         print ('{0} jogou ...\n PAPEL\n I.A jogou TESOURA'.format(nomePlayer1))
         print('{0} derrota, mais sorte na proxima!'.format(nomePlayer1))
     
-    else ('Valor Inválido'):#PLAYER RETARDADO QUE NÃO SABE DIGITAR 1 2 ou 3
+    else: print('Valor Inválido'): #PLAYER RETARDADO QUE NÃO SABE DIGITAR 1 2 ou 3
 else:
     print('valor inválido')
