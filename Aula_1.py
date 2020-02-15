@@ -2,9 +2,11 @@
 from random import randint
 import sys
 import os
+
 def restart_program():
     python = sys.executable
     os.execl(python, python, * sys.argv)
+
 actia1 = 0
 actia2 = 0
 actplayer1 = 0
@@ -72,11 +74,11 @@ if (modo == 1):
             print('{0}... derrota, mais sorte na proxima!'.format(nomeplayer1))
 
         else:
-            print('Valor Inválido') #PLAYER RETARDADO QUE NÃO SABE DIGITAR 1 2 ou 3
-        print('\nRodada {0}\n'.format(round))
-        print('{0} tem {1} vitórias\nI.A tem {2} Vitórias\n'.format(nomeplayer1,contwinp1,contwinia1))
+            print('Escolha inválida, ninguém leva ponto') #PLAYER RETARDADO QUE NÃO SABE DIGITAR 1 2 ou 3
+        
+        print('\n{0} tem {1} vitórias\nI.A tem {2} Vitórias'.format(nomeplayer1,contwinp1,contwinia1))
         print('{0} Empates\n'.format(contdraw))
-        pa = int(input('Digite 0 para jogar novamente\nDigite 1 para voltar ao menu\nDigite 3 para sair do jogo\n'))
+        pa = int(input('Digite 0 para jogar novamente\nDigite 1 para voltar ao menu\nDigite 3 para sair do jogo\n  '))
 
     else:
         if pa == 1:
@@ -135,12 +137,11 @@ elif (modo == 2):
             print('{0}, parabéns, esse round é seu!'.format(nomeplayer2))
 
         else:
-            print('Valor Inválido') #PLAYER RETARDADO QUE NÃO SABE DIGITAR 1 2 ou 3
+            print('Escolha inválida, ninguém leva ponto') #PLAYER RETARDADO QUE NÃO SABE DIGITAR 1 2 ou 3
 
-        print('\nRodada {0}\n'.format(round))
-        print('{0} tem {1} vitórias\n{3} tem {2} Vitórias'.format(nomeplayer1,contwinp1,contwinia1,nomeplayer2))
+        print('\n{0} tem {1} vitórias\n{3} tem {2} Vitórias'.format(nomeplayer1,contwinp1,contwinia1,nomeplayer2))
         print('{0} Empates\n'.format(contdraw))
-        pa = int(input('Digite 0 para jogar novamente\nDigite 1 para voltar ao menu\nDigite 3 para sair do jogo'))
+        pa = int(input('Digite 0 para jogar novamente\nDigite 1 para voltar ao menu\nDigite 3 para sair do jogo\n'))
 
     else:
         if pa == 1:
@@ -149,5 +150,5 @@ elif (modo == 2):
             exit
 
 else:
-    print('valor inválido')
+    print('valor inválido, escolha entre as opções descritas')
     restart_program()
