@@ -24,7 +24,6 @@ print('\nPedra Papel e Tesoura, the game\n')
 print('Selecionar modo de jogo: \n')
 print('Player vs I.A: digite 1\n')
 print('Player vs Player: digite 2\n')
-print('I.A vs I.A: digite 3\n')
 modo = int(input(''))
 
 #Modo player vs I.A
@@ -77,9 +76,13 @@ if (modo == 1):
         print('\nRodada {0}\n'.format(round))
         print('{0} tem {1} vitórias\nI.A tem {2} Vitórias\n'.format(nomeplayer1,contwinp1,contwinia1))
         print('{0} Empates\n'.format(contdraw))
-        pa = int(input('Digite 0 para jogar novamente\nDigite 1 para voltar ao menu\n'))
+        pa = int(input('Digite 0 para jogar novamente\nDigite 1 para voltar ao menu\nDigite 3 para sair do jogo\n'))
+
     else:
-        restart_program()
+        if pa == 1:
+            restart_program()
+        else:
+            exit
 #modo player VS player
 elif (modo == 2):
     nomeplayer1 = input('Player Um, me diga seu nome: ')
@@ -87,11 +90,11 @@ elif (modo == 2):
     while pa == 0:
         actplayer1 = int(input('{0} escolha entre pedra, papel e tesoura: 1, 2 ou 3 respectivamente \n'.format(nomeplayer1)))
         actplayer2 = int(input('{0} escolha entre pedra, papel e tesoura: 1, 2 ou 3 respectivamente \n'.format(nomeplayer2)))
-        cont +=1
 
         print('     JO\n        KEN\n       PO')#tá torto, arrumar!
         if actplayer1 == actplayer2: #condições de empate
             contdraw +=1
+            cont +=1
             if actplayer1 == 1:
                 print('{0} jogou ...\n PEDRA\n{1} também, empate.' .format(nomeplayer1,nomeplayer2))
             elif actplayer1 == 2:
@@ -101,38 +104,49 @@ elif (modo == 2):
 
         elif actplayer1 == 1 and actplayer2 == 3:#condições de vitora Player
             contwinp1 +=1
-            print('{0} jogou ...\n PEDRA\n{1} jogou TESOURA'.format(nomeplayer1))
+            cont +=1
+            print('{0} jogou ...\n PEDRA\n{1} jogou TESOURA'.format(nomeplayer1,nomeplayer2))
             print('{0}, parabéns, esse round é seu!'.format(nomeplayer1))
         elif actplayer1 == 2 and actplayer2 == 1:
             contwinp1 +=1
+            cont +=1
             print('{0} jogou ...\n PAPEL\n{1} jogou PEDRA'.format(nomeplayer1,nomeplayer2))
             print('{0}, parabéns, esse round é seu!'.format(nomeplayer1))
         elif actplayer1 == 3 and actplayer2 == 2:
             contwinp1 +=1
+            cont +=1
             print('{0} jogou ...\n TESOURA\n {1} jogou PAPEL'.format(nomeplayer1,nomeplayer2))
             print('{0}, parabéns, esse round é seu!'.format(nomeplayer1))
 
         elif actplayer1 == 3 and actplayer2 == 1:#condição de vitoria I.A
             contwinia1 +=1
+            cont +=1
             print('{0} jogou ...\n TESOURA\n{1} jogou PEDRA'.format(nomeplayer1,nomeplayer2))
             print('{0}, parabéns, esse round é seu!'.format(nomeplayer2))
         elif actplayer1 == 1 and actplayer2 == 2:
             contwinia1 +=1
+            cont +=1
             print('{0} jogou ...\n PEDRA\n{1} jogou PAPEL'.format(nomeplayer1,nomeplayer2))
             print('{0}, parabéns, esse round é seu!'.format(nomeplayer2))
         elif actplayer1 == 2 and actplayer2 == 3:
             contwinia1 +=1
+            cont +=1
             print('{0} jogou ...\n PAPEL\n{1} jogou TESOURA'.format(nomeplayer1,nomeplayer2))
             print('{0}, parabéns, esse round é seu!'.format(nomeplayer2))
 
         else:
             print('Valor Inválido') #PLAYER RETARDADO QUE NÃO SABE DIGITAR 1 2 ou 3
+
         print('\nRodada {0}\n'.format(round))
-        print('{0} tem {1} vitórias\n{3} tem {2} Vitórias\n'.format(nomeplayer1,contwinp1,contwinia1,nomeplayer2))
+        print('{0} tem {1} vitórias\n{3} tem {2} Vitórias'.format(nomeplayer1,contwinp1,contwinia1,nomeplayer2))
         print('{0} Empates\n'.format(contdraw))
-        pa = int(input('Digite 0 para jogar novamente\nDigite 1 para voltar ao menu\n'))
+        pa = int(input('Digite 0 para jogar novamente\nDigite 1 para voltar ao menu\nDigite 3 para sair do jogo'))
+
     else:
-        restart_program()
+        if pa == 1:
+            restart_program()
+        else:
+            exit
 
 else:
     print('valor inválido')
